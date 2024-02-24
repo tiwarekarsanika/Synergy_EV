@@ -36,7 +36,7 @@ function Navbar() {
           repeatDelay: 1
         }}
       ></motion.div>
-      App Name
+      EVolve
       </div>
       <div className="Menu flex mr-5 gap-2 self-center mt-3 font-bold text-md">
         <motion.a
