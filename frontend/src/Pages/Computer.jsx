@@ -5,15 +5,15 @@ import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 const Computer = () => {
 
-    const computer = useGLTF('./desktop_pc/scene.gltf')
+    const computer = useGLTF('./porche_918_spyder_2014/scene.gltf')
 
     return (
         <mesh>
-            <hemisphereLight intensity={0.15} groundColor="black" />
+            <hemisphereLight intensity={1} groundColor="black" />
             <pointLight intensity={1} />
             <primitive 
                 object={computer.scene} 
-                scale={0.75} // change the model size 
+                scale={3} // change the model size 
                 position={[0,-3.25,-1.5]} // change the model position
             />
         </mesh>

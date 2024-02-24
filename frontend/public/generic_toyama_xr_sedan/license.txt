@@ -1,0 +1,11 @@
+Model Information:
+* title:	Generic Toyama XR Sedan
+* source:	https://sketchfab.com/3d-models/generic-toyama-xr-sedan-a161542c38ac44fca3b1c283f6d986bb
+* author:	mk2design (https://sketchfab.com/mk2design)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Generic Toyama XR Sedan" (https://sketchfab.com/3d-models/generic-toyama-xr-sedan-a161542c38ac44fca3b1c283f6d986bb) by mk2design (https://sketchfab.com/mk2design) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -5,6 +5,8 @@ import HomePage from "./Pages/HomePage"
 import MapRoutes from './Pages/MapRoutes'
 import ChargingStations from './Pages/ChargingStations';
 import Landing from './Pages/Landing';
+import SelectCar from './Components/SelectCar'
+
 function App() {
 
   return (
@@ -12,6 +14,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' Component={LandingPage}/>
+          <Route path='/selectcar' Component={SelectCar}/>
           <Route path='/landing' Component={Landing}/>
           <Route path='/home' Component={HomePage}/>
           <Route path='/maproutes' Component={MapRoutes}/>
