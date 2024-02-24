@@ -5,6 +5,7 @@ import MapRoutes from './Pages/MapRoutes'
 import ChargingStations from './Pages/ChargingStations';
 import Landing from './Pages/Landing';
 import SelectCar from './Components/SelectCar'
+import LoginSignup from './Pages/LoginSignup (1)'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path='/home' Component={HomePage}/>
           <Route path='/maproutes' Component={MapRoutes}/>
           <Route path='/chargingStations' Component={ChargingStations}/>
+          <Route path='/login' Component={LoginSignup}/>
         </Routes>
       </BrowserRouter>
     </div>
