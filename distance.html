@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EV Remaining Distance Calculator</title>
+</head>
+<body>
+  <div>
+    <label for="remainingBattery">Remaining Battery Level (%):</label>
+    <input type="number" id="remainingBattery" min="0" max="100" placeholder="Enter remaining battery level">
+  </div>
+
+  <div>
+    <label for="totalRange">Total Range on Full Charge (kilometers):</label>
+    <input type="number" id="totalRange" min="1" placeholder="Enter total range">
+  </div>
+
+  <div>
+    <label for="energyConsmp">Energy Consumption (Wh per kilometer):</label>
+    <input type="number" id="energyConsmp" min="1" placeholder="Enter efficiency in Wh/km">
+  </div>
+
+  <button onclick="calculateRemainingDistance()">Calculate Remaining Distance</button>
+
+  <div id="result" style="margin-top: 10px;"></div>
+
+  <script>
+    function calculateRemainingDistance() {
+      var remainingBattery = parseFloat(document.getElementById('remainingBattery').value);
+      var totalRange = parseFloat(document.getElementById('totalRange').value);
+      var energyConsumption = parseFloat(document.getElementById('energyConsmp').value);
+
+      if (isNaN(remainingBattery) || isNaN(totalRange) || isNaN(energyConsumption) || 
+          remainingBattery < 0 || remainingBattery > 100 || energyConsumption <= 0) {
+        alert('Please enter valid information.');
+        return;
+      }
+
+      // Calculate remaining distance based on remaining battery level and consumption
+      battCap = totalRange * energyConsumption
+      battRem = (remainingBattery / 100) * battCap
+      var remainingDistance =  battRem / energyConsumption;
+
+      document.getElementById('result').innerText = 'Estimated Remaining Distance: ' + remainingDistance.toFixed(2) + ' kilometers';
+    }
+  </script>
+</body>
+</html>
+
+
+

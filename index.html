@@ -9,6 +9,25 @@
 </head>
 <body>
   <div>
+    <label for="remainingBattery">Remaining Battery Level (%):</label>
+    <input type="number" id="remainingBattery" min="0" max="100" placeholder="Enter remaining battery level">
+  </div>
+
+  <div>
+    <label for="totalRange">Total Range on Full Charge (kilometers):</label>
+    <input type="number" id="totalRange" min="1" placeholder="Enter total range">
+  </div>
+
+  <div>
+    <label for="energyConsmp">Energy Consumption (Wh per kilometer):</label>
+    <input type="number" id="energyConsmp" min="1" placeholder="Enter efficiency in Wh/km">
+  </div>
+
+  <button onclick="calculateRemainingDistance()">Calculate Remaining Distance</button>
+
+  <div id="result" style="margin-top: 10px;"></div>
+
+  <div>
     <label for="startLocation">Enter Starting Location:</label>
     <input type="text" id="startLocation" placeholder="Enter starting location">
   </div>
@@ -18,11 +37,6 @@
     <input type="text" id="endLocation" placeholder="Enter ending location">
   </div>
 
-  <div>
-    <label for="chargingStops">Number of Charging Stops:</label>
-    <input type="number" id="chargingStops" min="0" placeholder="Enter number of charging stops">
-  </div>
-
   <button onclick="planTrip()">Plan Trip</button>
 
   <div id="map" style="height: 400px; margin-top: 10px;"></div>
@@ -30,6 +44,25 @@
   <button onclick="startDirections()">Start Driving Directions</button>
 
   <script>
+    function calculateRemainingDistance() {
+      var remainingBattery = parseFloat(document.getElementById('remainingBattery').value);
+      var totalRange = parseFloat(document.getElementById('totalRange').value);
+      var energyConsumption = parseFloat(document.getElementById('energyConsmp').value);
+
+      if (isNaN(remainingBattery) || isNaN(totalRange) || isNaN(energyConsumption) || 
+          remainingBattery < 0 || remainingBattery > 100 || energyConsumption <= 0) {
+        alert('Please enter valid information.');
+        return;
+      }
+
+      // Calculate remaining distance based on remaining battery level and consumption
+      battCap = totalRange * energyConsumption
+      battRem = (remainingBattery / 100) * battCap
+      var remainingDistance =  battRem / energyConsumption;
+
+      document.getElementById('result').innerText = 'Estimated Remaining Distance: ' + remainingDistance.toFixed(2) + ' kilometers';
+    }
+
     var map;
     var directionsService;
     var directionsRenderer;
@@ -49,7 +82,6 @@
     function planTrip() {
       var startLocation = document.getElementById('startLocation').value;
       var endLocation = document.getElementById('endLocation').value;
-      var chargingStops = parseInt(document.getElementById('chargingStops').value);
 
       if (startLocation === '' || endLocation === '' || isNaN(chargingStops) || chargingStops < 0) {
         alert('Please enter valid information.');
