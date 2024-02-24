@@ -65,12 +65,13 @@ const LoginForm = () => {
     try {
       if (showLogin) {
         // Login
-        const response = await axios.post('http://localhost:3000/login', { username, password });
-        console.log(response.data);
+        const response = await axios.post('http://localhost:5000/login', { username, password });
+        console.log(response.message);
       } else {
         // Signup
-        const response = await axios.post('http://localhost:3000/user', { name: name, phone_number: phone , email: email, ev_model: model });
-        console.log(response.data);
+        const response = await axios.post('http://localhost:5000/user', { name: name, phone_number: phone , email: email, ev_model: model });
+        console.log(response.message);
+        navigate('/home');
       }
       // Reset form fields
       setEmail('');
@@ -80,7 +81,7 @@ const LoginForm = () => {
       setUsername('');
       setPassword('');
     } catch (error) {
-      console.error('Error:', error.response.data);
+      console.error('Error:', error.response.message);
     }
   };
 
@@ -197,7 +198,7 @@ const LoginForm = () => {
               </>
             )}
             <div className="text-center">
-              <button type="submit" onClick={handleNavigate} className="bg-black hover:bg-gray-900 text-white py-2 px-4 rounded-full focus:outline-none focus:shadow-outline">
+              <button type="submit" onClick={handleSubmit} className="bg-black hover:bg-gray-900 text-white py-2 px-4 rounded-full focus:outline-none focus:shadow-outline">
                 {showLogin ? 'Login' : 'Sign Up'}
               </button>
             </div>
