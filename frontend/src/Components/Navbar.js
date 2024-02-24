@@ -5,8 +5,7 @@ import { useState } from "react";
 import {motion} from 'framer-motion'
 
 function Navbar() {
-
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   const itemVariants = {
     open: {
       opacity: 1,
@@ -17,7 +16,11 @@ function Navbar() {
   };
 
   return (
-    <div className="Navbar justify-between flex align-middle bg-[#0c0c1d] h-15">
+    <motion.div
+      className="Navbar justify-between flex align-middle bg-[#0c0c1d] h-16 items-center"
+      style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000 }}
+    >
+      <div className="flex justify-center items-center text-white font-bold text-xl">
       <motion.div
         className="w-9 h-9 bg-white my-3 mx-5"
         animate={{
@@ -31,17 +34,47 @@ function Navbar() {
           times: [0, 0.2, 0.5, 0.8, 1],
           repeat: Infinity,
           repeatDelay: 1
-        }}>
-      </motion.div>
-      <div className="Menu flex mr-5 gap-2 self-center mt-3">
-        <motion.a href='#about' smooth={true} duration={500} className='px-2 py-1 rounded-md text-white'
-          whileHover={{ backgroundColor: '#ffffff', color: '#000000' }}>About</motion.a>
-        <motion.a href='#projects' smooth={true} duration={500} className='px-2 py-1 rounded-md text-white'
-          whileHover={{ backgroundColor: '#ffffff', color: '#000000' }}>Projects</motion.a>
-        <motion.a href='#skills' smooth={true} duration={500} className='px-2 py-1 rounded-md text-white'
-          whileHover={{ backgroundColor: '#ffffff', color: '#000000' }}>Skills</motion.a>
-        <motion.a href='#experiences' smooth={true} duration={500} className='px-2 py-1 rounded-md text-white'
-          whileHover={{ backgroundColor: '#ffffff', color: '#000000' }}>Experiences</motion.a>
+        }}
+      ></motion.div>
+      App Name
+      </div>
+      <div className="Menu flex mr-5 gap-2 self-center mt-3 font-bold text-md">
+        <motion.a
+          href="#about"
+          smooth={true}
+          duration={500}
+          className="px-2 py-1 rounded-md text-white"
+          whileHover={{ backgroundColor: "#ffffff", color: "#000000" }}
+        >
+          About
+        </motion.a>
+        <motion.a
+          href="#projects"
+          smooth={true}
+          duration={500}
+          className="px-2 py-1 rounded-md text-white"
+          whileHover={{ backgroundColor: "#ffffff", color: "#000000" }}
+        >
+          Projects
+        </motion.a>
+        <motion.a
+          href="#skills"
+          smooth={true}
+          duration={500}
+          className="px-2 py-1 rounded-md text-white"
+          whileHover={{ backgroundColor: "#ffffff", color: "#000000" }}
+        >
+          Skills
+        </motion.a>
+        <motion.a
+          href="#experiences"
+          smooth={true}
+          duration={500}
+          className="px-2 py-1 rounded-md text-white"
+          whileHover={{ backgroundColor: "#ffffff", color: "#000000" }}
+        >
+          Experiences
+        </motion.a>
         <motion.nav
           initial={false}
           animate={isOpen ? "open" : "closed"}
@@ -69,12 +102,20 @@ function Navbar() {
           </motion.button>
           <motion.ul
             animate={isOpen ? "open" : "closed"}
-            style={{ pointerEvents: isOpen ? "auto" : "none", position: "absolute", top: "100%", right: 5, backgroundColor: '#ffffff', color: '#000000', padding: '5px 20px 15px 20px' }}
+            style={{
+              pointerEvents: isOpen ? "auto" : "none",
+              position: "absolute",
+              top: "100%",
+              right: 5,
+              backgroundColor: "#ffffff",
+              color: "#000000",
+              padding: "5px 20px 15px 20px"
+            }}
             variants={{
               open: {
                 clipPath: "inset(0% 0% 0% 0% round 10px)",
-                width: 'fit-content',
-                height: 'auto',
+                width: "fit-content",
+                height: "auto",
                 transition: {
                   type: "spring",
                   bounce: 0,
@@ -94,9 +135,12 @@ function Navbar() {
               }
             }}
           >
-            <motion.li variants={itemVariants} style={{ display: 'flex', alignItems: 'center' }}>
+            <motion.li
+              variants={itemVariants}
+              style={{ display: "flex", alignItems: "center" }}
+            >
               {/* <FaLinkedin style={{ marginRight: '5px' }} /><a>darshini_kadme</a> */}
-                Item 1
+              Item 1
             </motion.li>
             <motion.li variants={itemVariants}>Item 2 </motion.li>
             <motion.li variants={itemVariants}>Item 3 </motion.li>
@@ -105,9 +149,9 @@ function Navbar() {
           </motion.ul>
         </motion.nav>
       </div>
-
-    </div>
+    </motion.div>
   );
 }
+
 
 export default Navbar;

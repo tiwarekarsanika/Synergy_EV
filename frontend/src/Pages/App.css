@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+}
+html{
+  scroll-snap-type: mandatory;
+  scroll-behavior: smooth;
+}
+
+body{
+  background-color: #ffffff;
+  color:#0c0c1d;
+}
+
+section{
+  height: 100vh;
+  scroll-snap-align: center;
+}
