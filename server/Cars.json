@@ -1,0 +1,67 @@
+[
+    {
+        "id": 1,
+        "brand": "Tesla",
+        "model": "Model 3 Long Range Dual Motor",
+        "acc": 4.6,
+        "top_speed": 233,
+        "range_km": 450,
+        "efficiency_wh_km": 161,
+        "fast_charge_kmH": 940,
+        "rapid_charge": "Yes",
+        "power_train": "AWD",
+        "plug_type": "Type 2 CCS"
+    }, 
+    {
+        "id": 2,
+        "brand": "Mercedes",
+        "model": "EQC 400 4MATIC",
+        "acc": 5.1,
+        "top_speed": 180,
+        "range_km": 370,
+        "efficiency_wh_km": 216,
+        "fast_charge_kmH": 440,
+        "rapid_charge": "Yes",
+        "power_train": "AWD",
+        "plug_type": "Type 2 CCS"
+    },
+    {
+        "id": 3,
+        "brand": "Porsche",
+        "model": "Taycan Cross Turismo",
+        "acc": 3.5,
+        "top_speed": 250,
+        "range_km": 385,
+        "efficiency_wh_km": 217,
+        "fast_charge_kmH": 770,
+        "rapid_charge": "Yes",
+        "power_train": "AWD",
+        "plug_type": "Type 2 CCS"
+    },
+    {
+        "id": 4,
+        "brand": "Nissan",
+        "model": "e-NV200 Evalia",
+        "acc": 14,
+        "top_speed": 123,
+        "range_km": 190,
+        "efficiency_wh_km": 200,
+        "fast_charge_kmH": 190,
+        "rapid_charge": "Yes",
+        "power_train": "FWD",
+        "plug_type": "Type 1 CHAdeMO"
+    },
+    {
+        "id": 5,
+        "brand": "Volkswagen",
+        "model": "ID.3 Pro Performance",
+        "acc": 7.3,
+        "top_speed": 160,
+        "range_km": 340,
+        "efficiency_wh_km": 171,
+        "fast_charge_kmH": 470,
+        "rapid_charge": "Yes",
+        "power_train": "RWD",
+        "plug_type": "Type 2 CCS"
+    }
+]

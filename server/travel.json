@@ -1,0 +1,73 @@
+[
+    {
+      "start": "Mumbai",
+      "destination": "Pune",
+      "total_distance": 150,
+      "total_hours": 3,
+      "battery_charges": 1
+    },
+    {
+      "start": "Delhi",
+      "destination": "Jaipur",
+      "total_distance": 250,
+      "total_hours": 5,
+      "battery_charges": 2
+    },
+    {
+      "start": "Bangalore",
+      "destination": "Chennai",
+      "total_distance": 350,
+      "total_hours": 6,
+      "battery_charges": 1
+    },
+    {
+      "start": "Kolkata",
+      "destination": "Bhubaneswar",
+      "total_distance": 200,
+      "total_hours": 4,
+      "battery_charges": 1
+    },
+    {
+      "start": "Hyderabad",
+      "destination": "Vijayawada",
+      "total_distance": 180,
+      "total_hours": 3.5,
+      "battery_charges": 1
+    },
+    {
+      "start": "Chandigarh",
+      "destination": "Amritsar",
+      "total_distance": 300,
+      "total_hours": 5.5,
+      "battery_charges": 2
+    },
+    {
+      "start": "Ahmedabad",
+      "destination": "Surat",
+      "total_distance": 120,
+      "total_hours": 2,
+      "battery_charges": 1
+    },
+    {
+      "start": "Lucknow",
+      "destination": "Kanpur",
+      "total_distance": 80,
+      "total_hours": 1.5,
+      "battery_charges": 1
+    },
+    {
+      "start": "Chennai",
+      "destination": "Coimbatore",
+      "total_distance": 400,
+      "total_hours": 7,
+      "battery_charges": 2
+    },
+    {
+      "start": "Jaipur",
+      "destination": "Jodhpur",
+      "total_distance": 320,
+      "total_hours": 6,
+      "battery_charges": 2
+    }
+  ]
+  
