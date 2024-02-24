@@ -15,15 +15,11 @@ background-color: #923cb5;
 } */
 .box {
     height: 50vh;
-    width: 30%;
+    width: 100%;
     background-color: rgb(225, 219, 219);
     border-radius: 10px;
 }
 
-
-.image:hover {
-    filter: contrast(100%)
-}
 
 .tagline {
     font-weight: 700;
