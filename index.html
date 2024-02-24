@@ -1,0 +1,121 @@
+<!-- AIzaSyDzjhGRFc6zr04vdTOqLt-gVc9V32S9Lm4 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EV Trip Planner</title>
+</head>
+<body>
+  <div>
+    <label for="startLocation">Enter Starting Location:</label>
+    <input type="text" id="startLocation" placeholder="Enter starting location">
+  </div>
+
+  <div>
+    <label for="endLocation">Enter Ending Location:</label>
+    <input type="text" id="endLocation" placeholder="Enter ending location">
+  </div>
+
+  <div>
+    <label for="chargingStops">Number of Charging Stops:</label>
+    <input type="number" id="chargingStops" min="0" placeholder="Enter number of charging stops">
+  </div>
+
+  <button onclick="planTrip()">Plan Trip</button>
+
+  <div id="map" style="height: 400px; margin-top: 10px;"></div>
+
+  <button onclick="startDirections()">Start Driving Directions</button>
+
+  <script>
+    var map;
+    var directionsService;
+    var directionsRenderer;
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+      });
+
+      directionsService = new google.maps.DirectionsService();
+      directionsRenderer = new google.maps.DirectionsRenderer({
+        map: map
+      });
+    }
+
+    function planTrip() {
+      var startLocation = document.getElementById('startLocation').value;
+      var endLocation = document.getElementById('endLocation').value;
+      var chargingStops = parseInt(document.getElementById('chargingStops').value);
+
+      if (startLocation === '' || endLocation === '' || isNaN(chargingStops) || chargingStops < 0) {
+        alert('Please enter valid information.');
+        return;
+      }
+
+      var request = {
+        origin: startLocation,
+        destination: endLocation,
+        travelMode: 'DRIVING'
+      };
+
+      directionsService.route(request, function(response, status) {
+        if (status == 'OK') {
+          var waypoints = generateChargingStations(response.routes[0].overview_path, chargingStops);
+          updateRouteWithWaypoints(request, waypoints);
+        } else {
+          console.error('Directions request failed due to ' + status);
+        }
+      });
+    }
+
+    function generateChargingStations(path, numStations) {
+      var stations = [];
+      var increment = Math.floor(path.length / (numStations + 1));
+
+      for (var i = 1; i <= numStations; i++) {
+        stations.push({
+          location: path[i * increment],
+          stopover: true
+        });
+      }
+
+      return stations;
+    }
+
+    function updateRouteWithWaypoints(request, waypoints) {
+      request.waypoints = waypoints;
+
+      directionsService.route(request, function(response, status) {
+        if (status == 'OK') {
+          directionsRenderer.setDirections(response);
+        } else {
+          console.error('Directions request failed due to ' + status);
+        }
+      });
+    }
+
+    function startDirections() {
+      directionsService.route({
+        origin: document.getElementById('startLocation').value,
+        destination: document.getElementById('endLocation').value,
+        waypoints: [],
+        travelMode: 'DRIVING'
+      }, function(response, status) {
+        if (status == 'OK') {
+          directionsRenderer.setDirections(response);
+        } else {
+          console.error('Directions request failed due to ' + status);
+        }
+      });
+    }
+  </script>
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzjhGRFc6zr04vdTOqLt-gVc9V32S9Lm4&callback=initMap"></script>
+</body>
+</html>
+
+
