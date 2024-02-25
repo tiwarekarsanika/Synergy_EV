@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../Components/Navbar';
+import Navbar2 from '../Components/Navbar2';
 import Sidebar from '../Components/Sidebar';
 import { FaUserCircle } from "react-icons/fa";
 import MyCarCanvas from './MyCar';
@@ -33,10 +33,10 @@ function HomePage() {
       },
     });
     console.log(response);
-
     const animation = animate(count, response.data.efficiency_wh_km, { duration: 5 });
     const animation2 = animate(count2, response.data.top_speed, { duration: 5 });
     const animation3 = animate(count3, response.data.range_km, { duration: 5 });
+
     mname = response.data.model;
     console.log(Cars[0]['Range(Km)'])
     return () => {
@@ -62,7 +62,7 @@ const [data, setData] = useState([])
 
   return (
     <div className="Home flex">
-      <Navbar />
+      <Navbar2 />
       <Sidebar />
       <div className='Details flex flex-grow justify-end mt-20  mx-5'>
         <div className='w-1/2'>
