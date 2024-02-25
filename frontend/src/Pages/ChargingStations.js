@@ -19,6 +19,8 @@ function Map() {
   const [markers, setMarkers] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
   const [selectedPlace, setSelectedPlace] = useState(null);
+  const [inputLocation, setInputLocation] = useState("");
+  const [showInput, setShowInput] = useState(false);
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -38,11 +40,13 @@ function Map() {
   };
 
   const handleInputLocation = () => {
-    const userInputLocation = prompt(
-      "Enter the location (e.g., city or address):"
-    );
-    if (userInputLocation) {
-      fetchLocationCoordinates(userInputLocation);
+    setShowInput(true);
+  };
+
+  const handleSubmitLocation = () => {
+    if (inputLocation.trim() !== "") {
+      setShowInput(false);
+      fetchLocationCoordinates(inputLocation);
     }
   };
 
@@ -115,6 +119,23 @@ function Map() {
         >
           Input Location
         </button>
+        {showInput && (
+          <div className="flex ml-4">
+            <input
+              type="text"
+              placeholder="Enter location..."
+              className="h-10 mt-5 border rounded-md p-2"
+              value={inputLocation}
+              onChange={(e) => setInputLocation(e.target.value)}
+            />
+            <button
+              onClick={handleSubmitLocation}
+              className="bg-blue-500 mt-5 h-10 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2"
+            >
+              Submit
+            </button>
+          </div>
+        )}
       </div>
       <div
         id="map"
