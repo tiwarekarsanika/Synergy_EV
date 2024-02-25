@@ -71,7 +71,7 @@ const LoginForm = () => {
         // Signup
         const response = await axios.post('http://localhost:5000/user', { name: name, phone_number: phone , email: email, ev_model: model });
         console.log(response.message);
-        navigate('/home');
+        navigate('/selectcar');
       }
       // Reset form fields
       setEmail('');
@@ -101,7 +101,7 @@ const LoginForm = () => {
           <Lottie
             options={defaultOptions}
             height={400}
-            width={546}
+            width={450}
             style={{ position: 'absolute', bottom: 0, left: 0 }}
           />
           <div className="absolute bottom-0 mb-4 ml-4" style={{ color: 'white', fontSize: '48px' }}>

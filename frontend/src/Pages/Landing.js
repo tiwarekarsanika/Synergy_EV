@@ -5,7 +5,13 @@ import trI from "../Images/try2.png";
 import Navbar from "../Components/Navbar";
 import Experience from "../Components/Timeline/Timeline";
 import Feedbacks from "../Components/Feedbacks/Feedback";
+import arrow from '../Images/arrow.png'
+import { useNavigate } from "react-router-dom";
+
 function Landing() {
+
+    const navigate = useNavigate()
+
   return (
     <div className="h-full landingBg">
       <Navbar />
@@ -27,6 +33,13 @@ function Landing() {
               >
                 Find A route and travel hassel free!
               </h4>
+              <button className=" flex items-center gap-1 text-black font-Yeseva bg-yellow-700 px-4 py-1 rounded-full w-44 h-10 ml-16 mt-9"
+              onClick={()=>navigate('./login')}>
+                <span className="text-center font- pr-1  text-xl pd ">
+                  Get Started
+                </span>
+                <img className="w-6 h-6" src={arrow} alt="Icon" />
+              </button>
             </div>
             <div>
               <img className="mt-12" src={trI} />
