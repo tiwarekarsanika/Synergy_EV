@@ -13,6 +13,7 @@ import { FaBoltLightning } from "react-icons/fa6";
 import { LineChart } from '@mui/x-charts/LineChart';
 import travel from '../Components/travel.json'
 import { BarChart } from '@mui/x-charts/BarChart';
+import axios from 'axios';
 
 
 function HomePage() {
@@ -24,17 +25,26 @@ function HomePage() {
   const count3 = useMotionValue(0);
   const range = useTransform(count3, Math.round);
 
-  useEffect(() => {
-    const animation = animate(count, Cars[0]['Efficiency(Wh/Km)'], { duration: 5 });
-    const animation2 = animate(count2, Cars[0]['top_speed(KmH)'], { duration: 5 });
-    const animation3 = animate(count3, Cars[0]['Range(Km)'], { duration: 5 });
+  var mname = ''
+  const myFunction = async () => {
+    const response = await axios.get('http://localhost:5000/model-info', {
+      params: {
+        modelName: "Model 3 Long Range Dual Motor",
+      },
+    });
+    console.log(response);
+
+    const animation = animate(count, response.data.efficiency_wh_km, { duration: 5 });
+    const animation2 = animate(count2, response.data.top_speed, { duration: 5 });
+    const animation3 = animate(count3, response.data.range_km, { duration: 5 });
+    mname = response.data.model;
     console.log(Cars[0]['Range(Km)'])
     return () => {
       animation.stop();
       animation2.stop();
       animation3.stop();
     };
-  }, []);
+  };
 
    // State to store the extracted data
 const [data, setData] = useState([])
@@ -46,7 +56,9 @@ const [data, setData] = useState([])
     setData(extractedData);
   }, []);
 
-const valueFormatter = (value) => `${value}mm`;
+  useEffect(() => {
+    myFunction();
+  });
 
   return (
     <div className="Home flex">
@@ -83,7 +95,7 @@ const valueFormatter = (value) => `${value}mm`;
             </div>
             <div className='mt-2 border-2 rounded-lg h-fit p-5 flex flex-col justify-center items-center'>
               <MyCarCanvas />
-              <p className='font-bold text-lg w-2/3 text-center'>{Cars[0].model}</p>
+              <p className='font-bold text-lg w-2/3 text-center'>{mname}</p>
               <div className='grid grid-cols-3 mt-2'>
                   <div className="rounded-sm shadow-md border my-3 shadow-gray-300 text-gray-800">
                       <div className="grid place-items-center px-3 py-2">
@@ -110,8 +122,8 @@ const valueFormatter = (value) => `${value}mm`;
             </div>
             
           </div>
+        </div>
       </div>
-    </div>
   );
 }
 
