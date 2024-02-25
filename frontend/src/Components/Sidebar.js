@@ -4,7 +4,7 @@ import {motion} from 'framer-motion'
 const Sidebar = () => {
     return (
       <motion.div
-        className="fixed inset-y-0 left-0 w-80 bg-[#0c0c1d] z-50 top-16"
+        className="fixed inset-y-0 left-0 w-72 bg-[#0c0c1d] z-50 top-16"
         initial={{ x: '-100%' }}
         animate={{ x: 0 }}
         exit={{ x: '-100%' }}
