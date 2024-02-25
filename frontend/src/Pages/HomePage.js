@@ -4,12 +4,16 @@ import Sidebar from '../Components/Sidebar';
 import { FaUserCircle } from "react-icons/fa";
 import MyCarCanvas from './MyCar';
 import Cars from '../Components/Cars.json'
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {useMotionValue, useTransform, animate} from 'framer-motion'
 import {motion} from 'framer-motion'
 import { IoIosSpeedometer } from "react-icons/io";
 import { GiPathDistance } from "react-icons/gi";
 import { FaBoltLightning } from "react-icons/fa6";
+import { LineChart } from '@mui/x-charts/LineChart';
+import travel from '../Components/travel.json'
+import { BarChart } from '@mui/x-charts/BarChart';
+
 
 function HomePage() {
 
@@ -32,12 +36,45 @@ function HomePage() {
     };
   }, []);
 
+   // State to store the extracted data
+const [data, setData] = useState([])
+ 
+
+  useEffect(() => {
+    const extractedData = travel.map(item => item.total_distance);
+    console.log(extractedData);
+    setData(extractedData);
+  }, []);
+
+const valueFormatter = (value) => `${value}mm`;
 
   return (
     <div className="Home flex">
       <Navbar />
       <Sidebar />
       <div className='Details flex flex-grow justify-end mt-20  mx-5'>
+        <div className='w-1/2'>
+        <div className=' border-2 m-2 rounded-lg h-fit grid place-items-center'>
+          <h1 className='font-semibold text-xl mt-5'>Carbon Footprint Comparison</h1>
+          <BarChart
+              yAxis={[{ scaleType: 'band', data: ["Your Vehicle", "Fuel Vehicles"] }]}
+              series={[{ data: [5067,28505], color: '#232352'}]}
+              layout="horizontal"
+              width={500}
+              height={200}
+              margin={{ right: 50, left: 100 }}
+          />
+        </div>
+        <div className=' border-2 m-2 rounded-lg h-fit grid place-items-center'>
+          <h1 className='font-semibold text-xl mt-5'>Distance Travelled in past 10 days</h1>
+            <LineChart xAxis={[
+                  {
+                    data: [1,2,3,4,5,6,7,8,9,10],
+                  },
+                ]}
+                series={[{ data: data, color: '#232352' }]} width={600} height={300} />
+        </div>
+        </div>
         <div className='w-1/4'>
             <div className=' border-2 rounded-lg h-fit p-5 flex flex-col justify-center items-center'>
               <FaUserCircle size={50}/>
@@ -46,8 +83,8 @@ function HomePage() {
             </div>
             <div className='mt-2 border-2 rounded-lg h-fit p-5 flex flex-col justify-center items-center'>
               <MyCarCanvas />
-              <p className='font-bold text-lg w-2/3'>{Cars[0].model}</p>
-              <div className='grid grid-cols-3'>
+              <p className='font-bold text-lg w-2/3 text-center'>{Cars[0].model}</p>
+              <div className='grid grid-cols-3 mt-2'>
                   <div className="rounded-sm shadow-md border my-3 shadow-gray-300 text-gray-800">
                       <div className="grid place-items-center px-3 py-2">
                           <IoIosSpeedometer/>
@@ -71,6 +108,7 @@ function HomePage() {
                   </div>
               </div>
             </div>
+            
           </div>
       </div>
     </div>
