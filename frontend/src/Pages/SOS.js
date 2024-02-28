@@ -95,23 +95,23 @@ const SOS = () => {
 
               // Use axios to make your HTTP requests here
               // For example, you can make a POST request to both SOS and SMS endpoints
-              const sosResponse = await axios.post(
-                `http://localhost:5000/send-whatsapp?latitude=${latitude}&longitude=${longitude}`
-              );
-              console.log("SOS call successful:", sosResponse.data);
+              // const sosResponse = await axios.post(
+              //   `http://localhost:5000/send-whatsapp?latitude=${latitude}&longitude=${longitude}`
+              // );
+              //console.log("SOS call successful:", sosResponse.data);
 
-              const smsResponse = await axios.post(
-                "http://localhost:5000/send-sms?latitude=${latitude}&longitude=${longitude}",
-                {
-                  message: "SOS: Emergency! Please check my location.",
-                  // Add any additional data needed for your SMS service
-                }
-              );
-              console.log("SMS sent successfully:", smsResponse.data);
+              // const smsResponse = await axios.post(
+              //   "http://localhost:5000/send-sms?latitude=${latitude}&longitude=${longitude}",
+              //   {
+              //     message: "SOS: Emergency! Please check my location.",
+              //     // Add any additional data needed for your SMS service
+              //   }
+              // );
+              //console.log("SMS sent successfully:", smsResponse.data);
             },
-            (error) => {
-              console.error("Error getting location:", error.message);
-            }
+            // (error) => {
+            //   console.error("Error getting location:", error.message);
+            // }
           );
         } else {
           console.error("Geolocation is not supported by this browser");

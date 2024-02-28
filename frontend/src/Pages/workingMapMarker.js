@@ -210,10 +210,10 @@ const UserChoice = () => {
   }, [lastWaypoint]);
 
   return (
-    <div className="App mt-28">
+    <div className="App mt-8 bg-white ">
       <Navbar />
-      <div className="flex mx-5 justify-center items-center">
-        <div className='m-5 p-5 h-fit shadow-md shadow-slate-500 w-1/3 text-black border rounded-sm grid place-items-center'> 
+      <div className="flex mx-5 justify-center items-center h-screen">
+        <div className='m-5 p-5 shadow-md shadow-slate-500 w-1/3 text-black border rounded-sm grid place-items-center'> 
             <motion.div className='flex w-full bg-[#1e1e44] shadow-md border shadow-gray-800 rounded-lg m-4'
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}>
@@ -230,7 +230,7 @@ const UserChoice = () => {
                     width={50}
                 />
                 <motion.input
-                    className="w-4/5 text-lg font-semibold pl-5 outline-none"
+                    className="w-4/5 text-lg font-semibold pl-5 outline-none text-white"
                     type="text"
                     placeholder="Source"
                     id="startLocation"
@@ -256,7 +256,7 @@ const UserChoice = () => {
                 />
                 </div>
                 <motion.input
-                    className="w-full text-lg font-semibold pl-5 outline-none"
+                    className="w-full text-lg font-semibold pl-5 outline-none text-white"
                     type="text"
                     placeholder="Destination"
                     id="endLocation"

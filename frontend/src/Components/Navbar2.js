@@ -1,7 +1,7 @@
 import React from "react";
 import { FaLink, FaLinkedin } from "react-icons/fa";
 import { useState } from "react";
-
+import { FaBoltLightning } from "react-icons/fa6";
 import { motion } from "framer-motion";
 
 function Navbar2() {
@@ -35,7 +35,7 @@ function Navbar2() {
             repeat: Infinity,
             repeatDelay: 1,
           }}
-        ></motion.div>
+        ><FaBoltLightning color="black" className="mt-2 ml-2"/></motion.div>
       </div>
       <div className="text-white font-bold mr-8 text-xl">EVolve</div>
     </motion.div>

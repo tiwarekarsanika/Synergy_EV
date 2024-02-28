@@ -15,7 +15,7 @@ function Landing() {
   return (
     <div className="h-full landingBg">
       <Navbar />
-      <div className="flex flex-col items-center justify-center px-6 py-8  md:h-screen lg:py-0 bg-transparent">
+      <div className="flex flex-col items-center justify-center px-6 py-8  md:h-screen lg:py-0 bg-transparent mt-8">
         <div className="md:mt-0 w-3/4 h-3/4 xl:p-0 bg-gray-400 rounded-md bg-clip-padding bg-opacity-10 border border-gray-100 shadow-3xl ">
           <div className="grid grid-cols-2 place-items-center justify-center">
             <div className="grid grid-span-1">

@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { FaBoltLightning } from "react-icons/fa6";
 
 function Navbar() {
 
@@ -28,7 +29,7 @@ function Navbar() {
         <motion.div
           className="w-9 h-9 bg-white my-3 mx-5"
           animate={{
-            scale: [1, 1, 1.3, 1.3, 1],
+            scale: [1, 1, 1.3, 1.4, 1],
             rotate: [0, 0, 180, 180, 0],
             borderRadius: ["0%", "0%", "50%", "50%", "0%"],
           }}
@@ -39,7 +40,7 @@ function Navbar() {
             repeat: Infinity,
             repeatDelay: 1,
           }}
-        ></motion.div>
+        ><FaBoltLightning color="black" className="mt-2 ml-2"/></motion.div>
         EVolve
       </div>
       <div className="Menu flex mr-5 gap-2 justify-center items-center mt-3 font-bold text-md">

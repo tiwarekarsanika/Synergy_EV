@@ -11,6 +11,8 @@ import { TbCarCrane } from "react-icons/tb";
 import { IoMdBatteryCharging } from "react-icons/io";
 import { GiPathDistance } from "react-icons/gi";
 import { BsFillFuelPumpFill } from "react-icons/bs";
+import SOS from './SOS'
+import {useNavigate} from 'react-router-dom';
 
 const MapContainer = () => {
   const [chargingStations, setChargingStations] = useState([]);
@@ -445,6 +447,33 @@ const MapContainer = () => {
       }
     });
   };
+
+  const saveRouteAsJson = () => {
+    // Create an object to represent the route data
+    const routeData = {
+      startLocation,
+      endLocation,
+      totalTime,
+      remainingDistance,
+      route: directionsRenderer.getDirections().routes[0]
+      // Add more properties as needed
+    };
+
+    // Convert the route data object to a JSON string
+    const routeJson = JSON.stringify(routeData, null, 2);
+
+    // Create a Blob containing the JSON data
+    const blob = new Blob([routeJson], { type: 'application/json' });
+
+    // Create a temporary <a> element to trigger the download
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'route_data.json'; // File name
+    a.click();
+
+    // Cleanup
+    URL.revokeObjectURL(a.href);
+  };
   
 
   useEffect(() => {
@@ -453,15 +482,17 @@ const MapContainer = () => {
     }
   }, [lastWaypoint]);
 
+  const navigate = useNavigate();
+
   return (
     <div className="App mt-20">
       <Navbar />
       <div className="flex mx-5">
         <div className='w-1/3'>
         <div className='border-2 p-2 m-5 rounded-sm grid grid-cols-3 place-items-center'>
-          <p className='grid place-items-center'><FaTaxi size={50}/>Cab Services</p>
-          <p className='grid place-items-center'><FaTaxi size={50}/>Cab Services</p>
-          <p className='grid place-items-center'><TbCarCrane size={50}/>Tow Services</p>
+          <p className='grid place-items-center'><SOS size={20}/> Services</p>
+          <p className='grid place-items-center' onClick={()=>navigate('../cabService')}><FaTaxi size={50}/>Cab Services</p>
+          <p className='grid place-items-center' onClick={()=>navigate('../towService')}><TbCarCrane size={50}/>Tow Services</p>
         </div>
         <div className='m-5 p-5 h-fit shadow-md shadow-slate-500 text-black border rounded-sm grid place-items-center'>
             <motion.div className='flex w-full bg-[#1e1e44] shadow-md border shadow-gray-800 rounded-lg m-4'
@@ -480,7 +511,7 @@ const MapContainer = () => {
                     width={80}
                 />
                 <motion.input
-                    className="w-4/5 text-lg font-semibold pl-5 outline-none"
+                    className="w-4/5 text-lg font-semibold pl-5 outline-none text-white"
                     type="text"
                     placeholder="Source"
                     value={startLocation}
@@ -506,7 +537,7 @@ const MapContainer = () => {
                 />
                 </div>
                 <motion.input
-                    className="w-full text-lg font-semibold pl-5 outline-none"
+                    className="w-full text-lg font-semibold pl-5 outline-none text-white"
                     type="text"
                     placeholder="Destination"
                     id="endLocation"
@@ -521,7 +552,7 @@ const MapContainer = () => {
                     <IoMdBatteryCharging size={30} color='white'/>
                   </div>
                 <motion.input
-                    className="w-4/5 text-lg font-semibold pl-5 outline-none"
+                    className="w-4/5 text-lg font-semibold pl-5 outline-none text-white"
                     type="number"
                     placeholder="Battery Percentage"
                     id="remainingBattery"
@@ -538,7 +569,7 @@ const MapContainer = () => {
                 <GiPathDistance size={30} color='white'/>
                 </div>
                 <motion.input
-                    className="w-4/5 text-lg font-semibold pl-5 outline-none"
+                    className="w-4/5 text-lg font-semibold pl-5 outline-none text-white"
                     type="number"
                     placeholder="Total Range"
                     id="totalRange"
@@ -554,7 +585,7 @@ const MapContainer = () => {
                   <BsFillFuelPumpFill size={30} color='white' />
                 </div>
                 <motion.input
-                    className="w-4/5 text-lg font-semibold pl-5 outline-none"
+                    className="w-4/5 text-lg font-semibold pl-5 outline-none text-white"
                     type="number"
                     placeholder="Efficiency in Wh/km"
                     id="energyConsmp"
@@ -588,8 +619,9 @@ const MapContainer = () => {
                   </div>
                 </div>
             <div className="flex-grow mx-5 h-fit shadow-md shadow-slate-500 text-white border rounded-sm">
-                  <div id="map" style={{ height: '400px', marginTop: '10px' }}></div>
+                  <div id="map" style={{ height: '500px', marginTop: '10px' }}></div>
               </div>
+              <button onClick={saveRouteAsJson} className='rounded-sm p-2 m-4 bg-gray-500 text-white'>Save Route as JSON</button>
             </div>
       </div>
       

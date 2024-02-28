@@ -105,7 +105,7 @@ function Map() {
   }, [selectedPlace]);
 
   return (
-    <div className="shadow-slate-500 mt-32 ml-8 w-8/12  border rounded-sm overflow-hidden">
+    <div className="shadow-slate-500 mt-16 ml-8 w-8/12  border rounded-sm overflow-hidden">
       <div className="flex">
         <button
           onClick={handleUseCurrentLocation}
